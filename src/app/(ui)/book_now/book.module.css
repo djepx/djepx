@@ -1,0 +1,23 @@
+.book_now {
+    width: 100%;
+    padding-block: var(--page-padding-block);
+    margin-top: 100px;
+    background-color: var(--clr-hot-pink);
+    text-align: center;
+
+    @media screen and (max-width: 500px) {
+        padding-block: 100px;
+    }
+
+    & a {
+        font-size: var(--fs-900);
+        font-family: var(--ff-anton);
+        transition: 0.25s text-stroke;
+
+        &:hover {
+            color: transparent;
+            -webkit-text-stroke: 2px #fff;
+            text-stroke: 2px #fff;
+        }
+    }
+}

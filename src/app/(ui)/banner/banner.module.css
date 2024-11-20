@@ -1,0 +1,47 @@
+.banner {
+    width: 100%;
+    min-height: 100vh;
+    padding-inline: var(--page-padding-inline);
+    position: relative;
+    z-index: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &:after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    & .background__image {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        object-fit: cover;
+        object-position: bottom;
+        inset: 0;
+        transform: translateY(calc((var(--background-position) * 0.5) * 1px));
+    }
+
+    .cta {
+        max-width: 1000px;
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+
+        & h1 {
+            font-size: var(--fs-900);
+        }
+
+        @media screen and (max-width: 500px) {
+            padding-block: 150px 100px;
+        }
+    }
+}

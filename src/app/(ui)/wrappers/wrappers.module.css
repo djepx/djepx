@@ -1,0 +1,61 @@
+.wrapper--main{
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+    padding-block: var(--page-padding-block);
+    
+    &.main--home{
+        padding-top: 0;
+        gap: 0;
+        padding-inline: 0;
+    }
+}
+
+.wrapper--section{
+    max-width: 1280px;
+    width: 100%;
+    position: relative;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--gap) * 1px);
+}
+
+.wrapper--gallery__wedding{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 25px;
+    row-gap: 50px;
+
+    @media screen and (max-width: 1000px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media screen and (max-width: 750px) {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+.wrapper--gallery__general{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+
+    @media screen and (max-width: 1000px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media screen and (max-width: 750px) {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+.wrapper--song_list{
+    display: flex;
+    gap: 50px;
+    width: 100%;
+
+    @media screen and (max-width: 1000px) {
+        flex-direction: column;
+    }
+}
