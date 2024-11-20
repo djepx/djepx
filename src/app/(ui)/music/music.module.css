@@ -183,20 +183,28 @@
     gap: 10px;
 
     & svg {
-        width: 32px;
         aspect-ratio: 1;
         fill: #fff;
         cursor: pointer;
+    }
+}
 
-        &:hover {
-            opacity: 0.75;
-        }
+.btn__play_pause {
+    width: 32px;
+
+    &:hover {
+        opacity: 0.75;
     }
 }
 
 .btn__prev,
 .btn__next {
-    width: 25px !important;
+    width: 20px !important;
+    opacity: 0.75;
+
+    &:hover {
+        opacity: 1;
+    }
 }
 
 .player__trackbar {
@@ -238,7 +246,8 @@
 }
 
 .song__artists {
-    font-size: 10px !important;
+    font-size: 11px !important;
+    opacity: 0.75;
 }
 
 .volume__control {

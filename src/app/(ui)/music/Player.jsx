@@ -7,6 +7,7 @@ import styles from "./music.module.css";
 export default function Player(props) {
     const play = (
         <svg
+            className={styles.btn__play_pause}
             onClick={() => props.setIsPlaying(!props.isPlaying)}
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 512 512"
@@ -16,6 +17,7 @@ export default function Player(props) {
     );
     const pause = (
         <svg
+            className={styles.btn__play_pause}
             onClick={() => props.setIsPlaying(!props.isPlaying)}
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 512 512"
