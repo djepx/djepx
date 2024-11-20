@@ -23,6 +23,26 @@ export default function Player(props) {
             <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM224 192l0 128c0 17.7-14.3 32-32 32s-32-14.3-32-32l0-128c0-17.7 14.3-32 32-32s32 14.3 32 32zm128 0l0 128c0 17.7-14.3 32-32 32s-32-14.3-32-32l0-128c0-17.7 14.3-32 32-32s32 14.3 32 32z" />
         </svg>
     );
+    const next = (
+        <svg
+            onClick={() => props.handleNext()}
+            className={styles.btn__next}
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 320 512"
+        >
+            <path d="M52.5 440.6c-9.5 7.9-22.8 9.7-34.1 4.4S0 428.4 0 416L0 96C0 83.6 7.2 72.3 18.4 67s24.5-3.6 34.1 4.4l192 160L256 241l0-145c0-17.7 14.3-32 32-32s32 14.3 32 32l0 320c0 17.7-14.3 32-32 32s-32-14.3-32-32l0-145-11.5 9.6-192 160z" />
+        </svg>
+    );
+    const prev = (
+        <svg
+            onClick={() => props.handlePrev()}
+            className={styles.btn__prev}
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 320 512"
+        >
+            <path d="M267.5 440.6c9.5 7.9 22.8 9.7 34.1 4.4s18.4-16.6 18.4-29l0-320c0-12.4-7.2-23.7-18.4-29s-24.5-3.6-34.1 4.4l-192 160L64 241 64 96c0-17.7-14.3-32-32-32S0 78.3 0 96L0 416c0 17.7 14.3 32 32 32s32-14.3 32-32l0-145 11.5 9.6 192 160z" />
+        </svg>
+    );
 
     const playback_minutes = Math.floor(props.currentPlaybackTime / 60);
     const playback_seconds = Math.round(
@@ -55,7 +75,11 @@ export default function Player(props) {
                         </div>
                     </div>
                     <div className={styles.player__controls}>
-                        {props.isPlaying ? pause : play}
+                        <div className={styles.player__btns}>
+                            {prev}
+                            {props.isPlaying ? pause : play}
+                            {next}
+                        </div>
                         <div className={styles.player__trackbar}>
                             <p>
                                 {playback_minutes}:

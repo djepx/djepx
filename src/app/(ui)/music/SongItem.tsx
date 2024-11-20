@@ -55,8 +55,10 @@ export default function SongItem({
     return (
         <div className={styles.song} onClick={() => test()}>
             {nowPlaying === index && isPlaying === true ? pause : play}
-            <p>{name}</p>
-            <p>{artists}</p>
+            <div className={styles.list__details}>
+                <p className={styles.list__name}>{name}</p>
+                <p className={styles.list__artists}>{artists}</p>
+            </div>
         </div>
     );
 }

@@ -60,6 +60,15 @@
     transition: 0.25s bottom;
     z-index: 1;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & svg {
+        width: 20px;
+        aspect-ratio: 1;
+        fill: #fff;
+    }
 }
 
 /* Song List */
@@ -79,10 +88,23 @@
     }
 }
 
+.list__details {
+    display: flex;
+    flex-direction: column;
+}
+
+.list__name {
+    font-size: 16px;
+}
+
+.list__artists {
+    font-size: 14px;
+    opacity: 0.75;
+}
+
 .song {
     display: flex;
-    gap: 25px;
-    justify-content: space-between;
+    gap: 50px;
     cursor: pointer;
     position: relative;
     padding-inline: 25px;
@@ -104,10 +126,6 @@
     & svg {
         width: 15px;
         fill: #fff;
-    }
-
-    & p {
-        font-size: 16px;
     }
 }
 
@@ -157,19 +175,35 @@
     align-items: center;
     justify-content: center;
     gap: 5px;
+}
+
+.player__btns {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 
     & svg {
-        max-width: 35px;
+        width: 32px;
+        aspect-ratio: 1;
         fill: #fff;
         cursor: pointer;
+
+        &:hover {
+            opacity: 0.75;
+        }
     }
+}
+
+.btn__prev,
+.btn__next {
+    width: 25px !important;
 }
 
 .player__trackbar {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    gap: 25px;
+    gap: 10px;
 
     & p {
         font-size: 12px;
@@ -181,7 +215,7 @@
 }
 
 .player__details {
-    width: 30%;
+    width: 35%;
     display: flex;
     gap: 10px;
     align-items: center;
@@ -208,7 +242,7 @@
 }
 
 .volume__control {
-    width: 30%;
+    width: 35%;
     display: flex;
     justify-content: flex-end;
 }

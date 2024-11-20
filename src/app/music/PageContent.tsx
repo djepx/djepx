@@ -75,6 +75,28 @@ export default function PageContent({ songs }: Props) {
         }
     };
 
+    function handleNext() {
+        if (nowPlaying === songs.length - 1) {
+            setIsPlaying(false);
+        } else if (nowPlaying != null) {
+            setNowPlayingSongName(songs[nowPlaying + 1].song_title);
+            setSongCover(songs[nowPlaying + 1].song_cover.url);
+            setSongArtists(songs[nowPlaying + 1].song_artists);
+            setNowPlaying(nowPlaying + 1);
+        }
+    }
+
+    function handlePrev() {
+        if (nowPlaying === 0) {
+            setIsPlaying(false);
+        } else if (nowPlaying != null) {
+            setNowPlayingSongName(songs[nowPlaying - 1].song_title);
+            setSongCover(songs[nowPlaying - 1].song_cover.url);
+            setSongArtists(songs[nowPlaying - 1].song_artists);
+            setNowPlaying(nowPlaying - 1);
+        }
+    }
+
     // seek bar
     const handleSeek = (time: number) => {
         if (audioEl.current) {
@@ -143,24 +165,26 @@ export default function PageContent({ songs }: Props) {
                 <div className="music--featured">
                     <div className="featured__items">
                         {featured_songs.length > 0 ? (
-                            featured_songs.map((song: Songs) => (
-                                <FeaturedItem
-                                    key={song.id}
-                                    name={song.song_title}
-                                    album_cover_link={song.song_cover.url}
-                                    artists={song.song_artists}
-                                    isPlaying={isPlaying}
-                                    setIsPlaying={setIsPlaying}
-                                    setNowPlayingSongName={
-                                        setNowPlayingSongName
-                                    }
-                                    setSongArtists={setSongArtists}
-                                    setSongCover={setSongCover}
-                                    setNowPlaying={setNowPlaying}
-                                    nowPlaying={nowPlaying}
-                                    index={song.index}
-                                />
-                            ))
+                            featured_songs
+                                .slice(0, 5)
+                                .map((song: Songs) => (
+                                    <FeaturedItem
+                                        key={song.id}
+                                        name={song.song_title}
+                                        album_cover_link={song.song_cover.url}
+                                        artists={song.song_artists}
+                                        isPlaying={isPlaying}
+                                        setIsPlaying={setIsPlaying}
+                                        setNowPlayingSongName={
+                                            setNowPlayingSongName
+                                        }
+                                        setSongArtists={setSongArtists}
+                                        setSongCover={setSongCover}
+                                        setNowPlaying={setNowPlaying}
+                                        nowPlaying={nowPlaying}
+                                        index={song.index}
+                                    />
+                                ))
                         ) : (
                             <p>no featured songs</p>
                         )}
@@ -227,6 +251,8 @@ export default function PageContent({ songs }: Props) {
                     currentPlaybackTime={currentPlaybackTime}
                     duration={duration}
                     onSeek={handleSeek}
+                    handleNext={handleNext}
+                    handlePrev={handlePrev}
                 />
             </SectionWrapper>
             <audio
