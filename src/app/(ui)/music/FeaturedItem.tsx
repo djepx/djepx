@@ -6,9 +6,12 @@ import styles from "./music.module.css";
 interface Props {
     name: string;
     album_cover_link: string;
+    artists: string;
     isPlaying: boolean;
     setIsPlaying: any;
     setNowPlayingSongName: any;
+    setSongArtists: any;
+    setSongCover: any;
     setNowPlaying: any;
     index: number;
     nowPlaying: any;
@@ -17,21 +20,26 @@ interface Props {
 export default function FeaturedItem({
     name,
     album_cover_link,
+    artists,
     isPlaying,
     setIsPlaying,
     setNowPlayingSongName,
+    setSongArtists,
+    setSongCover,
     setNowPlaying,
     index,
     nowPlaying,
 }: Props) {
     function test() {
+        setNowPlaying(index);
+        setNowPlayingSongName(name);
+        setSongCover(album_cover_link);
+        setSongArtists(artists);
         if (nowPlaying != index) {
             setIsPlaying(true);
         } else {
             setIsPlaying(!isPlaying);
         }
-        setNowPlayingSongName(name);
-        setNowPlaying(index);
     }
 
     return (

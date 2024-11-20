@@ -130,6 +130,24 @@ async function getTeams() {
     return response.json();
 }
 
+async function getMusic() {
+    const response = await fetch(`${apiURL}/musics/?populate=*`, {
+        method: "GET",
+        next: {
+            revalidate: 3600,
+        },
+        headers: {
+            Authorization: "Bearer " + key,
+        },
+    });
+
+    if (!response.ok) {
+        return response.json();
+    }
+
+    return response.json();
+}
+
 async function getImage(id: string) {
     const response = await fetch(`${apiURL}/upload/files/${id}`, {
         method: "GET",
@@ -156,6 +174,7 @@ const Strapi = {
     getPhotoboothGalleries,
     getPhotoboothGallery,
     getTeams,
+    getMusic,
     getImage,
 };
 

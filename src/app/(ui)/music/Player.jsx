@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 import styles from "./music.module.css";
 
 export default function Player(props) {
@@ -39,7 +41,18 @@ export default function Player(props) {
             {props.nowPlayingSongName ? (
                 <div className={styles.player}>
                     <div className={styles.player__details}>
-                        <p>{props.nowPlayingSongName}</p>
+                        <Image
+                            src={props.songCover}
+                            alt=""
+                            width={50}
+                            height={50}
+                        />
+                        <div className={styles.song__info}>
+                            <p>{props.nowPlayingSongName}</p>
+                            <p className={styles.song__artists}>
+                                {props.songArtists}
+                            </p>
+                        </div>
                     </div>
                     <div className={styles.player__controls}>
                         {props.isPlaying ? pause : play}
