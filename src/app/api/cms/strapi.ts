@@ -1,5 +1,5 @@
-const key = process.env.API_KEY;
-const apiURL = process.env.API_URL;
+const key = process.env.API_KEY_PROD;
+const apiURL = process.env.API_URL_PROD;
 
 async function getPage(page: string) {
     const response = await fetch(`${apiURL}/${page}?populate=*`, {
