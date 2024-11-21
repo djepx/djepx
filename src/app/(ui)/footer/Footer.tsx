@@ -2,7 +2,11 @@ import Link from "next/link";
 
 import styles from "./footer.module.css";
 
-export default function Footer() {
+interface Props {
+    date: string;
+}
+
+export default function Footer({ date }: Props) {
     return (
         <footer className={`${styles["footer--main"]}`}>
             <div className={`${styles["footer__socials"]}`}>
@@ -39,7 +43,7 @@ export default function Footer() {
                 </div>
             </div>
             <div className={`${styles["footer__details"]}`}>
-                <p>Copyright 2024 DJ EPX, LLC All Rights Reserved</p>
+                <p>Copyright {date} DJ EPX, LLC All Rights Reserved</p>
                 {/*<div className={`${styles['footer__links']}`}>
                     <a href="#">Disclaimers</a>
                 </div>*/}
