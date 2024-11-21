@@ -19,7 +19,7 @@ async function submitContactForm(formData: any) {
     });
 
     const mailOptions = {
-        from: `DJEPX <${process.env.EMAIL_USER}>`,
+        from: `DJ EPX <${process.env.EMAIL_USER}>`,
         to: `${process.env.EMAIL_USER}`,
         subject: "DJEPX Contact Form Submission",
         html: `<p><b>Name:</b> ${formData.name}</p><p><b>Email:</b> ${formData.email}</p><p><b>Event Date:</b> ${formData.date}</p> <p><b>Event Location:</b> ${formData.venue}</p><p><b>Details:</b></p><p>${formData.message}</p>`,
