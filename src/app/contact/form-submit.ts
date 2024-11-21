@@ -26,19 +26,7 @@ async function submitContactForm(formData: any) {
     };
 
     // send mail with defined transport object
-    const mail = await new Promise((resolve, reject) => {
-        smtpTransport.sendMail(mailOptions, (error, info) => {
-            if (error) {
-                console.log(error);
-                reject("error");
-            } else {
-                console.log(info);
-                resolve("good");
-            }
-        });
-    });
-
-    return mail;
+    return smtpTransport.sendMail(mailOptions);
 }
 
 export default async function handleContactForm(
@@ -53,9 +41,11 @@ export default async function handleContactForm(
         message: formData.get("message"),
     };
 
-    const status = await submitContactForm(rawFormData);
-
-    return {
-        message: status,
-    };
+    try {
+        await submitContactForm(rawFormData);
+        return { message: "good" };
+    } catch (error) {
+        console.log(error);
+        return { message: "error" };
+    }
 }

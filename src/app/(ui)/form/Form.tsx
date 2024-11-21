@@ -15,7 +15,7 @@ export default function Form() {
     return (
         <>
             {state.message != "good" ? (
-                <>
+                <div className={styles.form__wrapper}>
                     {state.message === "error" ? (
                         <p className={styles.form__error}>
                             An internal error occurred. Please try again.
@@ -42,7 +42,7 @@ export default function Form() {
                         ></textarea>
                         <SubmitButton />
                     </form>
-                </>
+                </div>
             ) : (
                 <div className={styles.form__success}>
                     <p>
