@@ -34,7 +34,7 @@ interface Props {
 }
 
 export default function PageContent({ songs }: Props) {
-    const [isPlaying, setIsPlaying] = useState(false); // sets all play/pause functionality
+    const [isPlaying, setIsPlaying] = useState(false); // sets play/pause functionality
     const [nowPlaying, setNowPlaying] = useState<number | null>(null); // the index of the selected song
     const [nowPlayingSongName, setNowPlayingSongName] = useState("");
     const [songCover, setSongCover] = useState("");
@@ -71,10 +71,11 @@ export default function PageContent({ songs }: Props) {
         setVolume(newVolume);
 
         if (audioEl.current) {
-            audioEl.current.volume = volume;
+            audioEl.current.volume = newVolume;
         }
     };
 
+    // next/prev btn handlers
     function handleNext() {
         if (nowPlaying === songs.length - 1) {
             setIsPlaying(false);
@@ -246,6 +247,7 @@ export default function PageContent({ songs }: Props) {
                     nowPlayingSongName={nowPlayingSongName}
                     songCover={songCover}
                     songArtists={songArtists}
+                    volume={volume} // this doesn't get used but putting it here to silence ts
                     setVolume={setVolume}
                     handleVolumeChange={handleVolumeChange}
                     currentPlaybackTime={currentPlaybackTime}
@@ -257,7 +259,6 @@ export default function PageContent({ songs }: Props) {
             </SectionWrapper>
             <audio
                 src={nowPlaying != null ? songs[nowPlaying].audio_file.url : ""}
-                /*src="/test.mp3"*/
                 ref={audioEl}
                 onEnded={() => handleTrackEnded()}
             ></audio>

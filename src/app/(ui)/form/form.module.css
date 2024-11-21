@@ -1,0 +1,73 @@
+.contact__form {
+    --padding: 15px 25px;
+    --ff: var(--ff-poppins);
+    --fs: 20px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    @media screen and (max-width: 1000px) {
+        width: 100%;
+    }
+
+    & input {
+        padding: var(--padding);
+        font-family: var(--ff);
+        font-size: var(--fs);
+        outline: none;
+        border: 2px solid #fff;
+        border-radius: 7.5px;
+        appearance: none;
+        background-color: #fff;
+        color: var(--clr-background-dark);
+
+        &:hover {
+            border-color: var(--clr-hot-pink);
+        }
+
+        &:focus {
+            border-color: var(--clr-hot-pink);
+        }
+    }
+
+    & button[type="submit"] {
+        cursor: pointer;
+        background-color: var(--clr-hot-pink);
+        color: #fff;
+        border: none;
+        padding: var(--padding);
+        border-radius: 7.5px;
+        font-family: var(--ff);
+        font-size: var(--fs);
+
+        &:hover {
+            opacity: 0.75;
+        }
+    }
+
+    & textarea {
+        appearance: none;
+        padding: var(--padding);
+        font-family: var(--ff);
+        font-size: var(--fs);
+        min-height: 250px;
+        outline: none;
+        border: 2px solid #fff;
+        border-radius: 7.5px;
+        background-color: #fff;
+        color: var(--clr-background-dark);
+
+        &:hover {
+            border-color: var(--clr-hot-pink);
+        }
+    }
+}
+
+.form__success {
+    width: 50%;
+}
+
+.form__error {
+    color: red;
+}

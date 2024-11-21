@@ -1,4 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+
+import Image from "next/image";
+
 import styles from "./music.module.css";
 
 interface Props {
@@ -47,17 +50,38 @@ export default function SongItem({
     );
 
     const pause = (
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 320 512"
+            className={styles.song__pause_btn}
+        >
             <path d="M48 64C21.5 64 0 85.5 0 112L0 400c0 26.5 21.5 48 48 48l32 0c26.5 0 48-21.5 48-48l0-288c0-26.5-21.5-48-48-48L48 64zm192 0c-26.5 0-48 21.5-48 48l0 288c0 26.5 21.5 48 48 48l32 0c26.5 0 48-21.5 48-48l0-288c0-26.5-21.5-48-48-48l-32 0z" />
         </svg>
     );
 
     return (
         <div className={styles.song} onClick={() => test()}>
-            {nowPlaying === index && isPlaying === true ? pause : play}
-            <div className={styles.list__details}>
-                <p className={styles.list__name}>{name}</p>
-                <p className={styles.list__artists}>{artists}</p>
+            <div className={styles.song__select}>
+                {nowPlaying === index && isPlaying === true ? (
+                    <>
+                        {pause}
+                        <div className={styles.now_playing}>
+                            <div className={styles.bar}></div>
+                            <div className={styles.bar}></div>
+                            <div className={styles.bar}></div>
+                            <div className={styles.bar}></div>
+                        </div>
+                    </>
+                ) : (
+                    play
+                )}
+            </div>
+            <div className={styles.list__info}>
+                <Image src={album_cover_link} alt="" width={40} height={40} />
+                <div className={styles.list__details}>
+                    <p className={styles.list__name}>{name}</p>
+                    <p className={styles.list__artists}>{artists}</p>
+                </div>
             </div>
         </div>
     );

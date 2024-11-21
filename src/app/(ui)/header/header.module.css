@@ -4,7 +4,7 @@
     align-items: center;
     padding-block: 25px;
     padding-inline: var(--page-padding-inline);
-    z-index: 1;
+    z-index: 2;
     position: relative;
 
     &.home {

@@ -1,7 +1,13 @@
 .featured__item {
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 10px;
+
+    &.active {
+        & .featured__play_btn {
+            bottom: 10%;
+        }
+    }
 }
 
 .featured__cover {
@@ -15,6 +21,14 @@
     &:hover {
         & .featured__play_btn {
             bottom: 10%;
+        }
+
+        & .song__pause_btn {
+            display: block;
+        }
+
+        & .now_playing {
+            display: none;
         }
     }
 
@@ -38,11 +52,25 @@
         object-fit: cover;
         display: block;
     }
+
+    & .song__pause_btn {
+        display: none;
+    }
+
+    & .bar {
+        background-color: #fff;
+    }
 }
 
 .featured__name,
 .featured__duration {
     font-family: var(--ff-poppins);
+}
+
+.featured__details {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5px;
 }
 
 .featured__name {
@@ -51,7 +79,7 @@
 
 .featured__play_btn {
     position: absolute;
-    width: 50px;
+    width: 40px;
     aspect-ratio: 1;
     background-color: var(--clr-hot-pink);
     bottom: -100px;
@@ -65,10 +93,15 @@
     align-items: center;
 
     & svg {
-        width: 20px;
+        width: 15px;
         aspect-ratio: 1;
         fill: #fff;
     }
+}
+
+.featured__artists {
+    font-size: 14px;
+    opacity: 0.75;
 }
 
 /* Song List */
@@ -104,13 +137,24 @@
 
 .song {
     display: flex;
-    gap: 50px;
+    align-items: center;
+    gap: 25px;
     cursor: pointer;
     position: relative;
     padding-inline: 25px;
     padding-block: 5px;
     border-radius: 5px;
     overflow: hidden;
+
+    &:hover {
+        & .song__pause_btn {
+            display: block;
+        }
+
+        & .now_playing {
+            display: none;
+        }
+    }
 
     &:after {
         content: "";
@@ -127,7 +171,26 @@
         width: 15px;
         fill: #fff;
     }
+
+    & img {
+        width: 45px;
+        height: 45px;
+        object-fit: cover;
+        border-radius: 5px;
+    }
+
+    .song__pause_btn {
+        display: none;
+    }
 }
+
+.list__info {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+/* --- Player Bar --- */
 
 @keyframes slideUp {
     from {
@@ -143,7 +206,7 @@
     left: 50%;
     top: 100%;
     transform: translateX(-50%);
-    width: 100%;
+    width: calc(100% - (var(--page-padding-inline) * 2));
     padding-block: 15px;
     padding-inline: 25px;
     background-color: rgba(75, 15, 50, 0.95);
@@ -231,6 +294,10 @@
 
     & img {
         border-radius: 5px;
+
+        @media screen and (max-width: 500px) {
+            display: none;
+        }
     }
 
     & p {
@@ -254,6 +321,105 @@
     width: 35%;
     display: flex;
     justify-content: flex-end;
+    gap: 7.5px;
+}
+
+.volume__icon {
+    width: 18px;
+    opacity: 0.75;
+    fill: #fff;
+}
+
+@media screen and (max-width: 500px) {
+    .player__details,
+    .volume__control {
+        display: none;
+    }
+
+    .player__controls {
+        width: 100%;
+    }
+
+    .song {
+        padding-inline: 0;
+        padding-block: 0;
+    }
+
+    .song__select {
+        display: none;
+    }
+
+    .list__name {
+        font-size: 13px;
+    }
+
+    .list__artists {
+        font-size: 11px;
+    }
+}
+
+/* --- Now Playing Indicator --- */
+@keyframes barUpFull {
+    0% {
+        height: 0%;
+    }
+    50% {
+        height: 75%;
+    }
+    100% {
+        height: 0%;
+    }
+}
+
+@keyframes barUpHalf {
+    0% {
+        height: 0%;
+    }
+    50% {
+        height: 50%;
+    }
+    100% {
+        height: 0%;
+    }
+}
+
+@keyframes barUpQuarter {
+    0% {
+        height: 0%;
+    }
+    50% {
+        height: 25%;
+    }
+    100% {
+        height: 0%;
+    }
+}
+
+.now_playing {
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    height: 15px;
+    width: 15px;
+}
+
+.bar {
+    width: 2px;
+    height: 0%;
+    background-color: #00ff00;
+    animation: barUpFull 1.5s infinite;
+}
+
+.bar:nth-child(2) {
+    animation: barUpHalf 0.5s infinite;
+}
+
+.bar:nth-child(3) {
+    animation: barUpQuarter 0.5s infinite;
+}
+
+.bar:nth-child(1) {
+    animation: barUpFull 0.75s infinite;
 }
 
 /*

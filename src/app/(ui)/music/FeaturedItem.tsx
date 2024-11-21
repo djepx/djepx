@@ -1,6 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @next/next/no-img-element */
+
 "use client";
+
+import Image from "next/image";
+
 import styles from "./music.module.css";
 
 interface Props {
@@ -49,21 +52,42 @@ export default function FeaturedItem({
     );
 
     const pause = (
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 320 512"
+            className={styles.song__pause_btn}
+        >
             <path d="M48 64C21.5 64 0 85.5 0 112L0 400c0 26.5 21.5 48 48 48l32 0c26.5 0 48-21.5 48-48l0-288c0-26.5-21.5-48-48-48L48 64zm192 0c-26.5 0-48 21.5-48 48l0 288c0 26.5 21.5 48 48 48l32 0c26.5 0 48-21.5 48-48l0-288c0-26.5-21.5-48-48-48l-32 0z" />
         </svg>
     );
 
     return (
-        <div className={styles.featured__item}>
+        <div
+            className={`${styles.featured__item} ${
+                nowPlaying === index && isPlaying ? styles.active : ""
+            }`}
+        >
             <div className={styles.featured__cover} onClick={() => test()}>
-                <img src={album_cover_link} alt="" />
+                <Image src={album_cover_link} alt="" width={216} height={216} />
                 <div className={styles.featured__play_btn}>
-                    {nowPlaying === index && isPlaying === true ? pause : play}
+                    {nowPlaying === index && isPlaying === true ? (
+                        <>
+                            {pause}
+                            <div className={styles.now_playing}>
+                                <div className={styles.bar}></div>
+                                <div className={styles.bar}></div>
+                                <div className={styles.bar}></div>
+                                <div className={styles.bar}></div>
+                            </div>
+                        </>
+                    ) : (
+                        play
+                    )}
                 </div>
             </div>
             <div className={styles.featured__details}>
                 <h3 className={styles.featured__name}>{name}</h3>
+                <p className={styles.featured__artists}>{artists}</p>
             </div>
         </div>
     );

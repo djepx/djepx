@@ -1,17 +1,17 @@
-.wrapper--main{
+.wrapper--main {
     display: flex;
     flex-direction: column;
     gap: 100px;
     padding-block: var(--page-padding-block);
-    
-    &.main--home{
+
+    &.main--home {
         padding-top: 0;
         gap: 0;
         padding-inline: 0;
     }
 }
 
-.wrapper--section{
+.wrapper--section {
     max-width: 1280px;
     width: 100%;
     position: relative;
@@ -21,7 +21,7 @@
     gap: calc(var(--gap) * 1px);
 }
 
-.wrapper--gallery__wedding{
+.wrapper--gallery__wedding {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     column-gap: 25px;
@@ -36,7 +36,7 @@
     }
 }
 
-.wrapper--gallery__general{
+.wrapper--gallery__general {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 25px;
@@ -50,9 +50,9 @@
     }
 }
 
-.wrapper--song_list{
+.wrapper--song_list {
     display: flex;
-    gap: 50px;
+    gap: 25px;
     width: 100%;
 
     @media screen and (max-width: 1000px) {

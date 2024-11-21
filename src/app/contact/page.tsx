@@ -7,6 +7,7 @@ import MainWrapper from "@/app/(ui)/wrappers/MainWrapper";
 import SectionWrapper from "@/app/(ui)/wrappers/SectionWrapper";
 
 import styles from "./contact.module.css";
+import Form from "@/app/(ui)/form/Form";
 
 export default async function Contact() {
     const contact_raw = await Strapi.getPage("contact");
@@ -27,17 +28,7 @@ export default async function Contact() {
                                     __html: contact_description,
                                 }}
                             ></div>
-                            <form action="#" className={styles.contact__form}>
-                                <input type="text" placeholder="Name" />
-                                <input type="email" placeholder="Email" />
-                                <input type="date" placeholder="Event Date" />
-                                <input
-                                    type="text"
-                                    placeholder="Venue Location"
-                                />
-                                <textarea placeholder="Message"></textarea>
-                                <input type="submit" value="Submit" />
-                            </form>
+                            <Form />
                         </div>
                     </div>
                 </SectionWrapper>
