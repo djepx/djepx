@@ -12,13 +12,15 @@
     "next": "14.2.15",
     "nodemailer": "^6.9.16",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-modal-image": "^2.6.0"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/nodemailer": "^6.4.17",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/react-modal-image": "^2.6.3",
     "eslint": "^8",
     "eslint-config-next": "14.2.15",
     "typescript": "^5"

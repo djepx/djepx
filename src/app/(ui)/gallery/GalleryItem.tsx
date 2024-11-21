@@ -1,4 +1,7 @@
+"use client";
 /* eslint-disable @typescript-eslint/no-explicit-any */
+
+import ModalImage from "react-modal-image";
 
 import Link from "next/link";
 import Image from "next/image";
@@ -43,15 +46,18 @@ export default function GalleryItem({
                 </>
             ) : (
                 <div className={styles.img__wrapper}>
-                    <Image
-                        src={
+                    <ModalImage
+                        small={
+                            img_object.provider === "local"
+                                ? `http://127.0.0.1:1338${img_object.formats.small.url}`
+                                : `${img_object.url}`
+                        }
+                        large={
                             img_object.provider === "local"
                                 ? `http://127.0.0.1:1338${img_object.url}`
                                 : `${img_object.url}`
                         }
                         alt={img_object.alternativeText}
-                        width={300}
-                        height={240}
                     />
                 </div>
             )}

@@ -42,7 +42,7 @@ export default async function Contact() {
                 alt={contact_data.banner.alternativeText}
                 width={1920}
                 height={1080}
-                className="banner__image"
+                className="section__banner"
             />
         </MainWrapper>
     );
