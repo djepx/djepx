@@ -11,7 +11,6 @@
     cursor: pointer;
     overflow: hidden;
     width: 100%;
-    height: 100%;
     aspect-ratio: 1.25;
     position: relative;
 
@@ -20,14 +19,15 @@
     }
 
     & > div {
-        width: inherit;
-        height: inherit;
+        width: 100%;
+        height: 100%;
     }
 
     & img {
-        width: inherit;
-        height: inherit;
+        width: 100%;
+        height: 100%;
         object-fit: cover;
+        object-position: top;
     }
 }
 
@@ -41,4 +41,25 @@
     position: absolute;
     inset: 0;
     z-index: 9;
+}
+
+.interior__image {
+    aspect-ratio: unset;
+    & img {
+        height: 200px;
+        width: auto;
+    }
+}
+
+.gallery__details {
+    display: flex;
+    gap: 25px;
+    justify-content: space-between;
+}
+
+.album__details,
+.gallery__details {
+    & h5 {
+        font-family: var(--ff-poppins);
+    }
 }

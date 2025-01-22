@@ -23,7 +23,11 @@ export default async function Home() {
 
     return (
         <MainWrapper page="home">
-            <Banner title={home_title} cta={home_cta} />
+            <Banner
+                title={home_title}
+                cta={home_cta}
+                img_path={home_data.page_banner.url}
+            />
             <Slider />
             <article className="article--home">
                 <SectionWrapper gap={100}>
@@ -31,7 +35,12 @@ export default async function Home() {
                     <div className="services">
                         <div className="service">
                             <Image
-                                src="https://hundred.talkswebdevelopment.com/images/edwin_club.jpg"
+                                src={
+                                    home_data.nightclubs_banner.provider ===
+                                    "local"
+                                        ? `http://127.0.0.1:1338${home_data.nightclubs_banner.url}`
+                                        : `${home_data.nightclubs_banner.url}`
+                                }
                                 alt="DJ EPX's performing at a nightclub"
                                 width="1920"
                                 height="1280"
@@ -55,7 +64,12 @@ export default async function Home() {
                         </div>
                         <div className="service">
                             <Image
-                                src="https://hundred.talkswebdevelopment.com/images/wedding.jpg"
+                                src={
+                                    home_data.weddings_banner.provider ===
+                                    "local"
+                                        ? `http://127.0.0.1:1338${home_data.weddings_banner.url}`
+                                        : `${home_data.weddings_banner.url}`
+                                }
                                 alt="DJ EPX's with the bride and groom at a wedding"
                                 width="1920"
                                 height="1440"

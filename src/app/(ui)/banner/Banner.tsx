@@ -10,9 +10,10 @@ import styles from "./banner.module.css";
 interface Props {
     title: string;
     cta: string;
+    img_path: string;
 }
 
-export default function Banner({ title, cta }: Props) {
+export default function Banner({ title, cta, img_path }: Props) {
     const [scrollY, setScrollY] = useState(0);
 
     useEffect(() => {
@@ -31,7 +32,7 @@ export default function Banner({ title, cta }: Props) {
     return (
         <div className={styles.banner}>
             <Image
-                src="https://hundred.talkswebdevelopment.com/images/home_banner.jpg"
+                src={img_path}
                 className={`${styles.background__image}`}
                 alt="DJ EPX's performing at a nightclub"
                 width={1920}

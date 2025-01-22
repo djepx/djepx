@@ -290,6 +290,22 @@ article {
     gap: 50px;
 }
 
+#react-modal-image-img {
+    width: auto;
+    max-height: 90%;
+}
+
+.gallery__divider {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.gallery__title {
+    text-transform: uppercase;
+    font-size: 32px;
+}
+
 /* --- Utility --- */
 .btn--standard {
     display: flex;
